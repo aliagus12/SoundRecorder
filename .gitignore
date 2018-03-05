@@ -7,3 +7,9 @@
 /build
 /captures
 .externalNativeBuild
+=======
+# Object file
+*.o
+
+# Ada Library Information
+*.ali

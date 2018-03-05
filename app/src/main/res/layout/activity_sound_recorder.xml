@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="recorder.sound.aliagus.com.soundrecorder.soundrecorder.SoundRecorder">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_up"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorAccent">
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_down"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    >
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/floatingActionPlayListRecorder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:clickable="true"
+                        android:src="@drawable/ic_playlist_play_white_24dp"
+                        />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/floatingActionPlayRecorder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:clickable="true"
+                        android:src="@drawable/ic_play_arrow_white_24dp" />
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/floatingActionPauseRecorder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        app:backgroundTint="@android:color/white"
+                        android:clickable="true"
+                        android:visibility="gone"
+                        android:src="@drawable/ic_pause_red_24dp" />
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/floatingActionResumeRecorder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:clickable="true"
+                        android:visibility="gone"
+                        android:src="@drawable/ic_play_arrow_white_24dp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floatingActionStartRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                android:src="@drawable/ic_voice_white_24dp" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floatingActionStopRecorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                android:src="@drawable/ic_stop_red_24dp"
+                android:visibility="gone"
+                app:backgroundTint="@android:color/white" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floatingActionStopPlayRecorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                android:src="@drawable/ic_pause_red_24dp"
+                android:visibility="gone"
+                app:backgroundTint="@android:color/white" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

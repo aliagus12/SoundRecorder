@@ -40,12 +40,9 @@ class SoundRecorder : AppCompatActivity(), SoundRecorderContract.View,
     private val soundRecorderPresenter: SoundRecorderPresenter by lazy {
         SoundRecorderPresenter(this, this)
     }
-
     private val requestCode = 101
-
     private lateinit var playListFragment: PlaylistFragment
     val TAG = javaClass.simpleName
-
     private var filePath: String? = null
     private var source: AudioSource? = null
     private var channel: AudioChannel? = null
@@ -72,7 +69,7 @@ class SoundRecorder : AppCompatActivity(), SoundRecorderContract.View,
     companion object {
         const val VISIBLE = 1
         const val GONE = 2
-        const val ID_TEXT_NEW_NAME = 100
+        //const val ID_TEXT_NEW_NAME = 100
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

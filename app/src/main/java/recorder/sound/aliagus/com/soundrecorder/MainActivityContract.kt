@@ -7,6 +7,7 @@ interface MainActivityContract {
     interface View {
         fun chekPermission()
         fun makeRequest()
+        fun initAudioRecorder()
     }
 
     interface Presenter {

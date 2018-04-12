@@ -3,12 +3,19 @@ package recorder.sound.aliagus.com.soundrecorder
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import org.jetbrains.anko.intentFor
-import recorder.sound.aliagus.com.soundrecorder.soundrecorder.SoundRecorder
+import recorder.sound.aliagus.com.soundrecorder.lib.Library
+import recorder.sound.aliagus.com.soundrecorder.model.AudioChannel
+import recorder.sound.aliagus.com.soundrecorder.model.AudioRecorder
+import recorder.sound.aliagus.com.soundrecorder.model.AudioSampleRate
+import recorder.sound.aliagus.com.soundrecorder.model.AudioSource
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity(), MainActivityContract.View {
 
@@ -16,16 +23,18 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
         MainActivityPresenter(this)
     }
     private val REQUEST_PERMISSION_ALL = 101
+    val requestCode = 102
+    val path = File (Environment.getExternalStorageDirectory().path + "/" + Library.baseFile)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         hideNavigationBar()
-        chekPermission()
     }
 
     override fun onResume() {
         super.onResume()
+        chekPermission()
     }
 
     override fun chekPermission() {
@@ -39,7 +48,7 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
         if (!permissionRecordAudioGranted || !permissionStorageReadGranted || !permissionStorageWriteGranted) {
             makeRequest()
         } else {
-            startActivity(intentFor<SoundRecorder>())
+            initAudioRecorder()
         }
     }
 
@@ -64,13 +73,33 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
                     }
                 }
                 if (isPermitted) {
-                    startActivity(intentFor<SoundRecorder>())
+                    initAudioRecorder()
                 } else {
                     moveTaskToBack(true)
                     finish()
                 }
             }
         }
+    }
+
+    override fun initAudioRecorder() {
+        try {
+            path.mkdirs()
+            var dateNow = Calendar.getInstance().time
+            val simpleDateFormat = SimpleDateFormat("dd_MM_yyyy_HH_mm_ss")
+            val date = simpleDateFormat.format(dateNow)
+            val filePath = path.absolutePath+ "/" + date + ".mp3"
+            AudioRecorder.with(this@MainActivity)
+                    .setFilePath(filePath)
+                    .setColor(android.R.color.holo_red_dark)
+                    .setRequestCode(requestCode)
+                    .setSource(AudioSource.MIC)
+                    .setChannel(AudioChannel.STEREO)
+                    .setSampleRate(AudioSampleRate.HZ_48000)
+                    .setAutoStart(false)
+                    .setKeepDisplayOn(true)
+                    .record()
+        } catch (e: Exception) { }
     }
 
     private fun hideNavigationBar() {

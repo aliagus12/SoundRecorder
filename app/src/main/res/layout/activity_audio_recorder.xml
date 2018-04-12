@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@id/coordinator_dashboard"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
+        <com.cleveroad.audiovisualization.GLAudioVisualizationView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/visualizerView"
+            app:av_bubblesSize="@dimen/bubble_size"
+            app:av_bubblesRandomizeSizes="true"
+            app:av_wavesHeight="@dimen/wave_height"
+            app:av_wavesFooterHeight="@dimen/footer_height"
+            app:av_wavesCount="7"
+            app:av_layersCount="1"
+            app:av_backgroundColor="@color/colorAccent"
+            app:av_bubblesPerLayer="20" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-10dp"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:fontFamily="sans-serif-light"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/timer_recorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="60sp"
+                android:textColor="@android:color/white"
+                android:fontFamily="sans-serif-thin"
+                android:text="00:00:00" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/aar_footer_height"
+            android:layout_alignParentBottom="true">
+
+            <ImageButton
+                android:id="@+id/image_button_restart"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/image_button_record"
+                android:layout_toLeftOf="@+id/image_button_record"
+                android:layout_marginTop="50dp"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_restart"
+                android:onClick="restartRecording"
+                android:visibility="invisible"
+                style="@style/Widget.AppCompat.Button.Borderless" />
+
+            <ImageButton
+                android:id="@+id/image_button_record"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="50dp"
+                android:layout_margin="15dp"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_rec"
+                android:onClick="toggleRecording"
+                style="@style/Widget.AppCompat.Button.Borderless" />
+
+            <ImageButton
+                android:id="@+id/image_button_play"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/image_button_record"
+                android:layout_toRightOf="@+id/image_button_record"
+                android:layout_marginTop="50dp"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_play"
+                android:onClick="togglePlaying"
+                style="@style/Widget.AppCompat.Button.Borderless" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
